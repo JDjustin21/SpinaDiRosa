@@ -1,0 +1,10 @@
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\bin\Debug\SpinaDiRosaDs.dacpac
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\bin\Debug\SpinaDiRosaDs.dll
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\bin\Debug\SpinaDiRosaDs.pdb
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\SpinaDiRosaDs.sqlproj.AssemblyReference.cache
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\Model.xml
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\refactor.xml
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\postdeploy.sql
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\predeploy.sql
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\SpinaDiRosaDs.dll
+C:\SpinaDiRosa\SpinaDiRosasSln\SpinaDiRosaDs\obj\Debug\SpinaDiRosaDs.pdb

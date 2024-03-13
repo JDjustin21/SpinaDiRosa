@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2024 5:04:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-UGJR7G9"
+  DTS:CreatorName="DESKTOP-UGJR7G9\jdpav"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{7EE1AA83-4D2D-4F7B-9B46-8E2DFEED2E36}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5107.6"
+  DTS:LocaleID="9226"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="MigracionIndividualTerapeutaLZSA"
+  DTS:VersionGUID="{413C0F18-1931-4348-9411-7ADFD8D91124}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FB9F8EA1-AA22-4CEA-A45B-9F14734740E8}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;User ID=&quot;&quot;;Initial Catalog=SpinaDiRosaSA;Provider=MSOLEDBSQL;Integrated Security=SSPI;Persist Security Info=False;Initial File Name=&quot;&quot;;Server SPN=&quot;&quot;;Authentication=&quot;&quot;;Access Token=&quot;&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0E8F890A-A88C-465C-BDBA-623CA8953E88}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;User ID=&quot;&quot;;Initial Catalog=SpinaDiRosaLZ;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Persist Security Info=False;Initial File Name=&quot;&quot;;Server SPN=&quot;&quot;;Authentication=&quot;&quot;;Access Token=&quot;&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{57DF04CB-E83F-4E55-B3E7-1E69780CDAD1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - Terapeuta"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - Terapeuta"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Terapeuta]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - Terapeuta.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[IdTerapeuta]"
+                      cachedDataType="guid"
+                      cachedName="IdTerapeuta"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[IdTerapeuta]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdTerapeuta]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[IdSucursal]"
+                      cachedDataType="guid"
+                      cachedName="IdSucursal"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[IdSucursal]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdSucursal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[Nombre]"
+                      cachedDataType="nText"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[Telefono]"
+                      cachedDataType="nText"
+                      cachedName="Telefono"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Telefono]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Telefono]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[Correo]"
+                      cachedDataType="nText"
+                      cachedName="Correo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Correo]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Correo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[Direccion]"
+                      cachedDataType="nText"
+                      cachedName="Direccion"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Direccion]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Direccion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[Activo]"
+                      cachedDataType="bool"
+                      cachedName="Activo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Activo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[Actualiza]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Actualiza"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Actualiza]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].Columns[IdTipoTerapeuta]"
+                      cachedDataType="guid"
+                      cachedName="IdTipoTerapeuta"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[IdTipoTerapeuta]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdTipoTerapeuta]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[IdTerapeuta]"
+                      dataType="guid"
+                      name="IdTerapeuta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[IdSucursal]"
+                      dataType="guid"
+                      name="IdSucursal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      dataType="nText"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Telefono]"
+                      dataType="nText"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Correo]"
+                      dataType="nText"
+                      name="Correo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Direccion]"
+                      dataType="nText"
+                      name="Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input].ExternalColumns[IdTipoTerapeuta]"
+                      dataType="guid"
+                      name="IdTipoTerapeuta" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - Terapeuta.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Terapeuta.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Terapeuta.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Terapeuta.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Terapeuta"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Terapeuta"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Terapeuta]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Terapeuta.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdTerapeuta]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[IdTerapeuta]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdTerapeuta]"
+                      name="IdTerapeuta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdSucursal]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[IdSucursal]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdSucursal]"
+                      name="IdSucursal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Telefono]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Telefono]"
+                      name="Telefono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Correo]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Correo]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Correo]"
+                      name="Correo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Direccion]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Direccion]"
+                      name="Direccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Activo]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Activo]"
+                      name="Activo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[Actualiza]"
+                      name="Actualiza"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdTipoTerapeuta]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[IdTipoTerapeuta]"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].Columns[IdTipoTerapeuta]"
+                      name="IdTipoTerapeuta"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[IdTerapeuta]"
+                      dataType="guid"
+                      name="IdTerapeuta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[IdSucursal]"
+                      dataType="guid"
+                      name="IdSucursal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      dataType="nText"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                      dataType="nText"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Correo]"
+                      dataType="nText"
+                      name="Correo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                      dataType="nText"
+                      name="Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output].ExternalColumns[IdTipoTerapeuta]"
+                      dataType="guid"
+                      name="IdTipoTerapeuta" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[IdTerapeuta]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[IdTerapeuta]"
+                      name="IdTerapeuta" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[IdSucursal]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[IdSucursal]"
+                      name="IdSucursal" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                      name="Telefono" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Correo]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Correo]"
+                      name="Correo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Direccion]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Direccion]"
+                      name="Direccion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Activo]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Activo]"
+                      name="Activo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[Actualiza]"
+                      name="Actualiza" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[IdTipoTerapeuta]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[IdTipoTerapeuta]"
+                      name="IdTipoTerapeuta" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - Terapeuta.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Terapeuta.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{01DB16B9-5BB4-40F1-BFF5-27489F9352AB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FB9F8EA1-AA22-4CEA-A45B-9F14734740E8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Terapeuta]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{B9366A2F-71BE-4B45-AA34-1BE20982AB68\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{B9366A2F-71BE-4B45-AA34-1BE20982AB68}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{B9366A2F-71BE-4B45-AA34-1BE20982AB68}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>
