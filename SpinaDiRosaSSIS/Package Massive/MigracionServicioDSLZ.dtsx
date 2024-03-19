@@ -1,0 +1,767 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2024 4:40:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-UGJR7G9"
+  DTS:CreatorName="DESKTOP-UGJR7G9\jdpav"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{868ADD96-B35C-40C3-A14B-53D2A27B8832}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5107.6"
+  DTS:LocaleID="9226"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="MigracionServicioDSLZ"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{DA4F6607-D25A-4E4C-AAB3-37F4A623658B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4C1108FB-1CC7-46A6-BAC1-CE79AAC5B1BA}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SpinaDiRosaLZ;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3F3FE191-5F7E-4A0F-9D8F-AEC81C844789}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SpinaDiRosaBD;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{63EE3B85-C798-462F-B858-61BE9FA5585B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - Servicio"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - Servicio"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Servicio]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - Servicio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].Columns[IdServicio]"
+                      cachedDataType="guid"
+                      cachedName="IdServicio"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[IdServicio]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[IdServicio]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].Columns[IdTipoServicio]"
+                      cachedDataType="guid"
+                      cachedName="IdTipoServicio"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[IdTipoServicio]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[IdTipoServicio]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].Columns[Nombre]"
+                      cachedDataType="nText"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].Columns[Descripcion]"
+                      cachedDataType="nText"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].Columns[Activo]"
+                      cachedDataType="bool"
+                      cachedName="Activo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Activo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].Columns[Actualiza]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Actualiza"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Actualiza]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[IdServicio]"
+                      dataType="guid"
+                      name="IdServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[IdTipoServicio]"
+                      dataType="guid"
+                      name="IdTipoServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      dataType="nText"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Descripcion]"
+                      dataType="nText"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - Servicio.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Servicio.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Servicio.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Servicio.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 1 - TipoServicio"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 1 - TipoServicio"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TipoServicio]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].Columns[IdTipoServicio]"
+                      cachedDataType="guid"
+                      cachedName="IdTipoServicio"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[IdTipoServicio]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[IdTipoServicio]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].Columns[Nombre]"
+                      cachedDataType="nText"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].Columns[Activo]"
+                      cachedDataType="bool"
+                      cachedName="Activo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Activo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].Columns[Actualiza]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Actualiza"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Actualiza]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[IdTipoServicio]"
+                      dataType="guid"
+                      name="IdTipoServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      dataType="nText"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Servicio"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Servicio"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Servicio]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Servicio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[IdServicio]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[IdServicio]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[IdServicio]"
+                      name="IdServicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[IdTipoServicio]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[IdTipoServicio]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[IdTipoServicio]"
+                      name="IdTipoServicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Activo]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Activo]"
+                      name="Activo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].Columns[Actualiza]"
+                      name="Actualiza"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[IdServicio]"
+                      dataType="guid"
+                      name="IdServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[IdTipoServicio]"
+                      dataType="guid"
+                      name="IdTipoServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      dataType="nText"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      dataType="nText"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[IdServicio]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[IdServicio]"
+                      name="IdServicio" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[IdTipoServicio]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[IdTipoServicio]"
+                      name="IdTipoServicio" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Activo]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Activo]"
+                      name="Activo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[Actualiza]"
+                      name="Actualiza" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 1 - TipoServicio"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source 1 - TipoServicio"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TipoServicio]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[IdTipoServicio]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[IdTipoServicio]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[IdTipoServicio]"
+                      name="IdTipoServicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Activo]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Activo]"
+                      name="Activo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].Columns[Actualiza]"
+                      name="Actualiza"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[IdTipoServicio]"
+                      dataType="guid"
+                      name="IdTipoServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      dataType="nText"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[IdTipoServicio]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[IdTipoServicio]"
+                      name="IdTipoServicio" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[Activo]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[Activo]"
+                      name="Activo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[Actualiza]"
+                      name="Actualiza" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - Servicio.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Servicio.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task 1\Destination 1 - TipoServicio.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source 1 - TipoServicio.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{1187CF4F-AD1E-4E1B-90B3-42E5D3648D5A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4C1108FB-1CC7-46A6-BAC1-CE79AAC5B1BA}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Servicio]&#xA;GO&#xA;TRUNCATE TABLE [dbo].[TipoServicio]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{851A3084-C186-4CCF-8642-5E5F4E95404E\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{851A3084-C186-4CCF-8642-5E5F4E95404E}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{851A3084-C186-4CCF-8642-5E5F4E95404E}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

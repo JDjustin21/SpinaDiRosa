@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/19/2024 4:50:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-UGJR7G9"
+  DTS:CreatorName="DESKTOP-UGJR7G9\jdpav"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{4C9AD3CA-C0AE-41FB-A22B-6DB1DF77F734}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5107.6"
+  DTS:LocaleID="9226"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="MigracionIndividualCiudadCsv_SA"
+  DTS:VersionGUID="{8ECE8735-E696-495F-84D2-4D85824F069E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{80103C28-C410-4F84-98E4-6920879B56CE}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SpinaDiRosaSA;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{1855653E-4DB7-44E9-B3BC-E0678799DCFC}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="9226"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\SpinaDiRosa\SpinaDiRosasSln\ArchivosPlanos\Ciudad.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="36"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdCiudad"
+              DTS:DTSID="{CAB47E53-E0D6-41DA-AAE5-6956E0B4A35F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="36"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdDepartamento"
+              DTS:DTSID="{47A706E9-9B00-49D9-9446-F521A8CD868E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="12"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nombre"
+              DTS:DTSID="{B7AF2CF9-EF52-4330-9A47-168539ED7B23}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="11"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Activo"
+              DTS:DTSID="{79D3F88D-FD7B-4F2F-AC4C-DAF7354DA55A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Actualiza"
+              DTS:DTSID="{1ECB5F4C-ED28-44AD-8DA9-6354C6B03C39}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{6E56EB20-3A4B-4746-AC4E-F149573B097B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Data Conversion 0 - 0"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 0 - 0"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Actualiza]"
+                      cachedDataType="date"
+                      cachedName="Actualiza"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Actualiza]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Actualiza]"
+                      name="Actualiza"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Actualiza]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination - Ciudad"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - Ciudad"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Ciudad]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - Ciudad.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].Columns[IdCiudad]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="IdCiudad"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[IdCiudad]"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[IdCiudad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].Columns[IdDepartamento]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="IdDepartamento"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[IdDepartamento]"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[IdDepartamento]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].Columns[Activo]"
+                      cachedDataType="bool"
+                      cachedName="Activo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Activo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].Columns[Actualiza]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Actualiza"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Actualiza]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[IdCiudad]"
+                      dataType="wstr"
+                      length="36"
+                      name="IdCiudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[IdDepartamento]"
+                      dataType="wstr"
+                      length="36"
+                      name="IdDepartamento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="12"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input].ExternalColumns[Actualiza]"
+                      dataType="dbTimeStamp"
+                      name="Actualiza" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - Ciudad.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Ciudad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Ciudad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Ciudad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Ciudad_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="9226"
+              name="Source - Ciudad_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Ciudad_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[IdCiudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[IdCiudad]"
+                      length="36"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[IdCiudad]"
+                      name="IdCiudad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[IdDepartamento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[IdDepartamento]"
+                      length="36"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[IdDepartamento]"
+                      name="IdDepartamento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                      length="12"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Activo]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[Activo]"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Activo]"
+                      name="Activo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Actualiza]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[Actualiza]"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].Columns[Actualiza]"
+                      name="Actualiza"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[IdCiudad]"
+                      dataType="wstr"
+                      length="36"
+                      name="IdCiudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[IdDepartamento]"
+                      dataType="wstr"
+                      length="36"
+                      name="IdDepartamento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="12"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[Activo]"
+                      dataType="bool"
+                      name="Activo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output].ExternalColumns[Actualiza]"
+                      dataType="date"
+                      name="Actualiza" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      dataType="nText"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task 1\Destination - Ciudad.Inputs[Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - Ciudad_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{84AB5663-0070-4D2B-84F0-F388FB564DD6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{80103C28-C410-4F84-98E4-6920879B56CE}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[Ciudad] (&#xA;[IdCiudad] nvarchar(36),&#xA;[IdDepartamento] nvarchar(36),&#xA;[Nombre] nvarchar(12),&#xA;[Activo] bit,&#xA;[Actualiza] datetime&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E1A5C079-FF8A-43B1-9893-8B9A012C601C\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E1A5C079-FF8A-43B1-9893-8B9A012C601C}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E1A5C079-FF8A-43B1-9893-8B9A012C601C}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>
